@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.swiper {
+    width: 100%;
+    height: 30vh;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: linear-gradient(87.38deg, #9643FF 1.53%, #5200BA 98.76%);
+    color: #fff;
+    border-radius: 12px;
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-button-next:after {
+    background-image: url(../public/img/nextSlide.svg);
+    background-position: center;
+    
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: transparent;
+    font-size: 100px;
+    position: absolute;
+    right: 10px !important;
+    cursor: pointer;
+    transition: 0.3s ease !important;
+}
+
+.swiper-button-prev:after {
+    background-image: url(../public/img/prevSlide.svg);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: transparent;
+    font-size: 100px;
+    position: absolute;
+    left: 10px !important;
+    cursor: pointer;
+    transition: 0.3s ease !important;
+}
+
+@media only screen and (min-width: 300px) {
+    .swiper-button-next:after {
+        width: 22px;
+    }
+
+    .swiper-button-prev:after {
+        width: 22px;
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    .swiper-button-next:after {
+        width: 30px;
+    }
+
+    .swiper-button-prev:after {
+        width: 30px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .swiper-button-next:after {
+        width: 40px;
+    }
+
+    .swiper-button-prev:after {
+        width: 40px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .swiper-button-next:after {
+        width: 40px;
+    }
+
+    .swiper-button-prev:after {
+        width: 40px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .swiper {
+        height: 420px;
+    }
+}
