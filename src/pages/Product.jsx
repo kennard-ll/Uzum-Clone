@@ -9,6 +9,7 @@ import { getCartThunk } from "../features/cart/postCartThunk";
 const Product = () => {
 
     const data = useSelector(state => state.goods.data)
+    const cart = useSelector(state => state.cart.data)
     const id = window.location.href.split('/').at(-1)
     const filtered = data.filter(item => item.id == id)
     const arr = Array(data).at(-1)

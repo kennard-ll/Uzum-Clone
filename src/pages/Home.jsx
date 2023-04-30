@@ -3,7 +3,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {MdOutlineKeyboardArrowRight} from 'react-icons/md'
 import ProductCard from "../component/ProductCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Slider from "../component/Slider";
 import { getGoodsThunk } from "../features/goods/getGoodsThunk";
 
@@ -15,11 +15,9 @@ const Home = () => {
     const arr = Array(data).at(-1)
     const [count, setCount] = useState(5)
     const arrLen = arr.length
+    const dispatch = useDispatch()
 
-    if (count >= arrLen + 1) {
-        setCount(5)
-        
-    }
+   
 
     useEffect(() => {
 		if (!data.length) {
@@ -44,7 +42,7 @@ const Home = () => {
                 }
             </div>
             <div className=" text-center mt-[20px] mb-[20px]">
-                <button onClick={() => setCount(count + 20)} className="px-4 py-2 bg-[#76797f1a]  rounded-[6px] font-semibold">{arrLen == count ? 'Свернуть' : `Показать еще ${(arrLen - count) >= 10 ? '20' : (arrLen - count)}`} </button>
+                <button onClick={() => setCount(count + 5)} className="px-4 py-2 bg-[#76797f1a]  rounded-[6px] font-semibold">{arrLen == count ? 'Свернуть' : `Показать еще ${(arrLen - count) >= 10 ? '20' : (arrLen - count)}`} </button>
             </div>
         </section>
 

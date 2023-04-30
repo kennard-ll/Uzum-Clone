@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { addLiked } from "../features/liked/likedSlise";
+import { addLiked, removeLiked } from "../features/liked/likedSlise";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getLikeds, patchGoodsThunk } from "../features/liked/patchLikedThunk";
