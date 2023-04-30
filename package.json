@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"vite\" \"json-server -p 3102 -w db.json\"",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -15,6 +15,9 @@
     "@mui/material": "^5.12.0",
     "@mui/styled-engine-sc": "^5.12.0",
     "@reduxjs/toolkit": "^1.9.3",
+    "axios": "^1.4.0",
+    "concurrently": "^8.0.1",
+    "json-server": "^0.17.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",

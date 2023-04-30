@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {MdOutlineKeyboardArrowRight} from 'react-icons/md'
 import ProductCard from "../component/ProductCard";
 import { useSelector } from "react-redux";
 import Slider from "../component/Slider";
+import { getGoodsThunk } from "../features/goods/getGoodsThunk";
 
 
 const Home = () => {
@@ -11,6 +13,19 @@ const Home = () => {
     const data = useSelector(state => state.goods.data)
 
     const arr = Array(data).at(-1)
+    const [count, setCount] = useState(5)
+    const arrLen = arr.length
+
+    if (count >= arrLen + 1) {
+        setCount(5)
+        
+    }
+
+    useEffect(() => {
+		if (!data.length) {
+			dispatch(getGoodsThunk())
+		}   
+	}, []);
 
     return ( 
     <div>
@@ -28,7 +43,9 @@ const Home = () => {
                     arr.slice(0, 15).map((item, ind) =><ProductCard key={ind} item={item} />)
                 }
             </div>
-            <button className="bg-[#76797f1a] rounded-[8px] h-[56px] w-[95%] font-semibold">Покозать ещё</button>
+            <div className=" text-center mt-[20px] mb-[20px]">
+                <button onClick={() => setCount(count + 20)} className="px-4 py-2 bg-[#76797f1a]  rounded-[6px] font-semibold">{arrLen == count ? 'Свернуть' : `Показать еще ${(arrLen - count) >= 10 ? '20' : (arrLen - count)}`} </button>
+            </div>
         </section>
 
         <section className="mb-[40px]">
