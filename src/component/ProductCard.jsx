@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { addLiked, removeLiked } from "../features/liked/likedSlise";
+import { add_to_cart, remove_from_cart } from "../features/cart/cartSlise";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getLikeds, patchGoodsThunk } from "../features/liked/patchLikedThunk";
@@ -7,7 +8,7 @@ import { getLikeds, patchGoodsThunk } from "../features/liked/patchLikedThunk";
 const ProductCard = ({ item }) => {
 
     const liked_id = useSelector(state => state.liked.data_id)
-
+    const cart_id = useSelector(state => state.cart.data_id)
     const dispatch = useDispatch()
 
     const likeItem = () => {
@@ -23,6 +24,14 @@ const ProductCard = ({ item }) => {
             dispatch(getLikeds())
         }
     }, []);
+
+    const cartItem = () => {
+        if (cart_id.includes(item?.id)) {
+            dispatch(remove_from_cart(item?.id))
+        } else {
+            dispatch(add_to_cart(item))
+        }
+    }
 
     const percent = Math.round(item?.price - ((item?.price * item?.salePercentage) / 100))
     const perMonth = Math.round(item?.price / 12)
@@ -57,7 +66,10 @@ const ProductCard = ({ item }) => {
                             <p className={`${percent === item?.price ? 'hidden' : 'block'} line-through text-[11px] pl-[4px] text-[#757575] leading-none`}>{percent} сум</p>
                             <p className="text-[.875rem] pl-[1px] font-medium">{item.price} сум</p>                            
                         </div>
-                        <img className="w-[31px]" src="/img/korzinka.svg" alt="" />
+                        <div onClick={cartItem} className={`${cart_id.includes(item?.id) ? 'border-[#7000FF]' : 'border-[#ACACAC]'} w-[35px] h-[35px] rounded-[50%] border-[2px] flex items-center justify-center z-20`}>
+                            <img className="w-[21px] pr-[1px]" src="/img/korzinka.svg" alt="" />
+                        </div>
+                        
                     </div>
                 </div>
             </div>  

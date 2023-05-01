@@ -17,8 +17,6 @@ const Home = () => {
     const arrLen = arr.length
     const dispatch = useDispatch()
 
-   
-
     useEffect(() => {
 		if (!data.length) {
 			dispatch(getGoodsThunk())

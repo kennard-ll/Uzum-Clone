@@ -20,11 +20,16 @@ const Favorite = () => {
     } else {
         return (
             <>
-                <div className="grid xs:grid-cols-2 gap-[20px] vs:grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5  ">
+            <div>
+                <h1 className="mt-[50px] text-[1.5rem] font-semibold">Мои желания</h1>
+                <div className="border-b border-b-[#76797f33] mt-[34px] mb-4"></div>
+                <div className="grid grid-cols-2 gap-[20px] md:grid-cols-4 lg:grid-cols-5 ">
                     {
                         liked.map((item, inx) => <ProductCard key={inx} item={item} />)
                     }
-                </div>
+                </div>                
+            </div>
+
             </>
         )
     }
